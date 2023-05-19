@@ -1,13 +1,14 @@
 import express from 'express'
 import 'dotenv/config'
 import { teste } from './teste'
-import { cadastroUsuario } from './routes/users'
+import { userRouter } from './routes/userRoute'
 
 const app = express()
 
 app.use(express.json())
 
 app.get('/teste', teste)
-app.post('/cadastro', cadastroUsuario)
+
+app.use('/user', userRouter)
 
 app.listen(3000, () => console.log('RODANDO! '))
