@@ -1,5 +1,6 @@
 import knex from '../../database/db'
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 export async function loginUser(req, res) {
   const existEmail = await knex('tbl_dti_user')
@@ -18,7 +19,17 @@ export async function loginUser(req, res) {
         return res.status(401).json({ message: 'Authentication failed' })
       }
       if (result) {
-        res.status(200).json({ message: 'autenticado com sucsso' })
+        const token = jwt.sign(
+          {
+            nm_use: existEmail[0].nm_use,
+            ds_email: existEmail[0].ds_email,
+          },
+          process.env.JWT_KEY,
+          {
+            expiresIn: '1h',
+          },
+        )
+        res.status(200).json({ message: 'autenticado com sucsso', token })
       } else {
         return res.status(401).json({ message: 'Authentication failed' })
       }
