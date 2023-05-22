@@ -21,7 +21,8 @@ export async function loginUser(req, res) {
       if (result) {
         const token = jwt.sign(
           {
-            nm_use: existEmail[0].nm_use,
+            cd_user: existEmail[0].cd_user,
+            nm_user: existEmail[0].nm_user,
             ds_email: existEmail[0].ds_email,
           },
           process.env.JWT_KEY,
@@ -29,7 +30,11 @@ export async function loginUser(req, res) {
             expiresIn: '1h',
           },
         )
-        res.status(200).json({ message: 'autenticado com sucsso', token })
+        res.status(200).json({
+          message: 'autenticado com sucsso',
+          token,
+          id: existEmail[0].cd_user,
+        })
       } else {
         return res.status(401).json({ message: 'Authentication failed' })
       }
