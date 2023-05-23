@@ -10,7 +10,7 @@ API para por em prática os os conhecimentos adquiridos sobre a criação de API
 
 ## Aprendizados
 
-- middlewares, autênticações, tokens, rotas, 
+- CRUD básico, middlewares, autênticações, tokens, rotas, 
 ## Funcionalidades
 
 - criar um usuário
