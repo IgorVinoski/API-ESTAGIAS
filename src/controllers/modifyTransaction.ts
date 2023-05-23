@@ -5,7 +5,7 @@ export async function modifyTransaction(req, res, next) {
       req.body.newtitle &&
       req.body.newdescription &&
       req.body.newtype &&
-      req.body.cd_transaction &&
+      req.body.ds_valuetransaction &&
       (req.body.newtype === 'D' || req.body.newtype === 'C')
     ) {
       const select: any = await knex('tbl_dti_transaction')
@@ -19,6 +19,7 @@ export async function modifyTransaction(req, res, next) {
             ds_transactiontitle: req.body.newtitle,
             ds_transactiondescription: req.body.newdescription,
             tp_transactiontype: req.body.newtype,
+            ds_valuetransaction: req.body.ds_valuetransaction,
             cd_user: req.user.id,
           })
           .where('cd_transaction', `${req.params.cdTransaction}`)

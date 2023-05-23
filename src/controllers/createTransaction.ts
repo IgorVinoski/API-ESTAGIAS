@@ -14,6 +14,7 @@ export async function createTransaction(req, res, next) {
           ds_transactiontitle: req.body.title,
           ds_transactiondescription: req.body.description,
           tp_transactiontype: req.body.type,
+          ds_valuetransaction: req.body.ds_valuetransaction,
           cd_user: req.user.id,
         })
         .then(() => {
