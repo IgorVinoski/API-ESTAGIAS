@@ -8,7 +8,7 @@ export async function loginUser(req, res) {
     .where('ds_email', `${req.body.email}`)
 
   if (!existEmail[0]) {
-    return res.status(401).json({ message: 'Authentication failed' })
+    return res.status(401).json({ message: 'Authentication failed.' })
   }
   console.log(existEmail[0].ds_password)
   bcrypt.compare(
@@ -16,7 +16,7 @@ export async function loginUser(req, res) {
     existEmail[0].ds_password,
     (err, result) => {
       if (err) {
-        return res.status(401).json({ message: 'Authentication failed' })
+        return res.status(401).json({ message: 'Authentication failed.' })
       }
       if (result) {
         const token = jwt.sign(
@@ -36,7 +36,7 @@ export async function loginUser(req, res) {
           id: existEmail[0].cd_user,
         })
       } else {
-        return res.status(401).json({ message: 'Authentication failed' })
+        return res.status(401).json({ message: 'Authentication failed.' })
       }
     },
   )

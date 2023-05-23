@@ -10,17 +10,18 @@ export async function modifyTransaction(req, res, next) {
     ) {
       const select: any = await knex('tbl_dti_transaction')
         .select('cd_transaction')
-        .where('cd_transaction', `${req.body.cd_transaction}`)
+        .where('cd_transaction', `${req.params.cdTransaction}`)
 
       if (select[0]) {
         console.log('testando')
         await knex('tbl_dti_transaction')
-          .insert({
+          .update({
             ds_transactiontitle: req.body.newtitle,
             ds_transactiondescription: req.body.newdescription,
             tp_transactiontype: req.body.newtype,
             cd_user: req.user.id,
           })
+          .where('cd_transaction', `${req.params.cdTransaction}`)
           .then(() => {
             console.log(`updating the transaction: ${req.body.newtitle}`)
             return res

@@ -3,11 +3,11 @@ export async function deleteTransaction(req, res, next) {
   try {
     const select: any = await knex('tbl_dti_transaction')
       .select('cd_transaction')
-      .where('cd_transaction', `${req.body.cd_transaction}`)
+      .where('cd_transaction', `${req.params.cdTransaction}`)
     if (select[0]) {
       await knex('tbl_dti_transaction')
         .delete('*')
-        .where('cd_transaction', `${req.body.cd_transaction}`)
+        .where('cd_transaction', `${req.params.cdTransaction}`)
       return res.status(200).json({ message: 'transação deletada' })
     } else {
       return res
