@@ -45,7 +45,9 @@ Para o futuro:
 [ ] testes unitários
 
 ## banco de dados
-tabelas do banco
+tabelas do banco: 
+
+```sql
 create table tbl_dti_user(
 	cd_user SERIAL PRIMARY KEY,
 	nm_user varchar(200),
