@@ -19,7 +19,7 @@ export async function createTransaction(req, res, next) {
         .then(() => {
           console.log(`Inserting the transaction: ${req.body.title}`)
           return res
-            .status(200)
+            .status(201)
             .json({ message: 'transação concluída com sucesso' })
         })
         .catch((e) => {
