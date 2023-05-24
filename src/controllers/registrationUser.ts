@@ -3,17 +3,7 @@ import knex from '../../database/db'
 const bcrypt = require('bcrypt')
 
 export async function registrationUser(req, res) {
-  const hash = await bcrypt.hash(
-    req.body.password,
-    10, // 10,
-    // async (errBcrypt, hash) => {
-    //   if (errBcrypt) {
-    //     return res.status(500).send({ error: errBcrypt })
-    //   }
-    //   console.log(hash)
-    //   return hash
-    // },
-  )
+  const hash = await bcrypt.hash(req.body.password, 10)
   const existEmail = await knex('tbl_dti_user')
     .select('ds_email')
     .where('ds_email', `${req.body.email}`)

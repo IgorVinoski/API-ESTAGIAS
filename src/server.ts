@@ -1,14 +1,11 @@
 import express from 'express'
 import 'dotenv/config'
-import { teste } from './teste'
 import { userRouter } from './routes/userRoutes'
 import { transactionRouter } from './routes/transactionRouter'
 
 const app = express()
 
 app.use(express.json())
-
-app.get('/teste', teste)
 
 app.use('/user', userRouter)
 app.use('/transaction', transactionRouter)

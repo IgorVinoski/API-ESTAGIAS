@@ -12,7 +12,6 @@ exports.required = (req, res, next) => {
     req.user.id = user.cd_user
     next()
   } catch (e) {
-    console.log(req.use)
     return res.status(401).json({ message: 'falha na autenticação' })
   }
 }

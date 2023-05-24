@@ -5,9 +5,7 @@ export async function listAllTransactionsByUser(req, res, next) {
     const select: any = await knex('tbl_dti_transaction')
       .select('cd_transaction')
       .where('cd_user', `${req.user.id}`)
-
     if (select) {
-      console.log('AAAAAAAAAAA')
       await knex
         .select(
           'cd_transaction',

@@ -2,7 +2,6 @@ import knex from '../../database/db'
 
 export async function createTransaction(req, res, next) {
   try {
-    // console.log(login.required.user.cd_user)
     if (
       req.body.title &&
       req.body.description &&
