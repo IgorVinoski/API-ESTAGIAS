@@ -2,7 +2,7 @@
   "name": "api-estagias",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "lint": "eslint src --ext .ts --fix",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
