@@ -264,5 +264,3 @@ $$ LANGUAGE plpgsql;
 ```
 
 ### Para o futuro
-[ ] testes unitários?
-
